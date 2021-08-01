@@ -1,0 +1,6 @@
+#files
+
+*.npy
+
+__pycache__/
+/intern

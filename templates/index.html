@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Íntern</title>
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            <h2>Mathematical Information Retrieval</h2>
+        </div>
+        
+        <hr>
+
+        <div class="container">
+            <h3>Search</h3>
+            <div>
+                <form method="POST", action="{{ url_for('srch')}}">
+                    <input type="text" id="query" name="query" class="form-control" placeholder="Query" aria-label="query" aria-describedby="basic-addon1"><br>
+                    <input type="submit" class="btn btn-primary">
+                </form>
+            </div> 
+            <div class="result">
+                {% if results %}
+                <h3><span>Results</span></h3>
+                <ul class="list">
+                {% for res, value in results.items() %}
+                    <li><span>Document Name :</span> {{value['DOCNO']}} <br> <span>Similarity : </span>{{value['Similarity']}}</li>
+                    <p></p>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <hr>
+                {% for i in range(1, 11) %}
+                <a href="{{ url_for('next', num=i)}}">{{i}}</a>
+                {% endfor %}
+                
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
