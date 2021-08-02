@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Íntern</title>
+</head>
+<body class="bgg">
+    <nav class="navbar navbar-light header nbg">
+        <ul>
+          <li style="margin-left: 50px;" class='headerTitle'><a href="/">MIR</a></li>
+          <li style='float: right; margin-right: 50px; margin-top: 1px;'><a href="/team">Team</a></li>
+          <li style='float: right; margin-top: 1px;'><a href="/query">Queries</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="heading">
+            <br><br>
+            <h2>Sample Queries</h2>
+        </div>
+        <br><br>
+        <ol class="list">
+            {% for qry in querylist %}
+                <li><span>Query :</span> {{qry}} <br> </li>
+                <p></p>
+            {% endfor %}
+        </ol>
+
+        <div>
+            <br><br>
+            <br>
+            <hr>
+        </div>
+        <footer>
+            <img src='/static/logo.png'  class="center">
+            <!-- <br> -->
+            <div class="lab">
+                <span>Centre for Natural Language Processing (CNLP),</span>
+                <span>NATIONAL INSTITUTE OF TECHNOLOGY SILCHAR</span>
+            </div>
+        </footer>
+        <br><br>
+    </div>
+</body>
+</html>

@@ -1,6 +1,12 @@
 #files
 
 *.npy
+*.csv
 
 __pycache__/
 /intern
+
+*.jpg
+*.JPG
+*.png
+*.jpeg

@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 from searchQ import searchQuery
 
+from query import queryfun
+
 app = Flask(__name__)
 
 results = {}
@@ -14,9 +16,9 @@ def srch():
     global results
     if request.method == 'POST':
         data = request.form
-    print(data)
+    # print(data)
     query = data['query']
-    print(query)
+    # print(query)
     #searchQuery(query)
     results = searchQuery(query)
     # print(results)
@@ -45,6 +47,14 @@ def next(num):
     print(results)
     return render_template('index.html', results=newres)
 
+@app.route('/team')
+def team():
+    return render_template('team.html')
+
+@app.route('/query')
+def query():
+    querylist = queryfun()
+    return render_template('query.html', querylist=querylist)
 
 if __name__ == "__main__":
     app.run(debug=True, port=3000)

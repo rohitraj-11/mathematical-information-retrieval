@@ -8,15 +8,26 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>Íntern</title>
 </head>
-<body>
+<body class="bgg">
+    <nav class="navbar navbar-light header nbg">
+        <ul>
+          <li style="margin-left: 50px;" class='headerTitle'><a href="/">MIR</a></li>
+          <li style='float: right; margin-right: 50px; margin-top: 1px;'><a href="/team">Team</a></li>
+          <li style='float: right; margin-top: 1px;'><a href="/query">Queries</a></li>
+        </ul>
+    </nav>
     <div class="container">
         <div class="heading">
+            <br><br>
             <h2>Mathematical Information Retrieval</h2>
         </div>
         
         <hr>
 
         <div class="container">
+            {% if not results %}
+            <br><br><br><br>
+            {% endif %}
             <h3>Search</h3>
             <div>
                 <form method="POST", action="{{ url_for('srch')}}">
@@ -34,14 +45,31 @@
                 {% endfor %}
                 </ul>
                 {% endif %}
+
+                {% if results %}
+                <!-- <hr> -->
+                <div class="pages">
+                    {% for i in range(1, 11) %}
+                    <a href="{{ url_for('next', num=i)}}" >{{i}}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <br><br><br>
+                {% if not results %}
+                <br><br><br><br><br><br>
+                {% endif %}
                 <hr>
-                {% for i in range(1, 11) %}
-                <a href="{{ url_for('next', num=i)}}">{{i}}</a>
-                {% endfor %}
-                
             </div>
         </div>
-
+        <footer>
+            <img src='/static/logo.png'  class="center">
+            <!-- <br> -->
+            <div class="lab">
+                <span>Centre for Natural Language Processing (CNLP),</span>
+                <span>NATIONAL INSTITUTE OF TECHNOLOGY SILCHAR</span>
+            </div>
+        </footer>
+        <br><br>
     </div>
 </body>
 </html>
