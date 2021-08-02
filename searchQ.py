@@ -18,7 +18,7 @@ def searchQuery(query):
     def cosine(u, v):
         return np.dot(u, v) / (np.linalg.norm(u) * np.linalg.norm(v))
 
-    sentence_embeddings = np.load('formula_embeddings.npy')
+    sentence_embeddings = np.load('utils\\formula_embeddings.npy')
 
     # query = r"-0.026838601\ldots"
 
